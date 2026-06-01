@@ -31,7 +31,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import headshot from "@/assets/gabriel-headshot.jpg";
+import headshotAsset from "@/assets/gabriel-headshot.jpeg.asset.json";
+const headshot = headshotAsset.url;
 
 const skillGroups = [
   {
