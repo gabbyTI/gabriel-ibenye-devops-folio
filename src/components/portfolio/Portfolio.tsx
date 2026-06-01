@@ -17,6 +17,10 @@ import {
   Code2,
   Terminal,
   Layers,
+  TrendingDown,
+  Workflow,
+  CheckCircle2,
+  Rocket,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -27,32 +31,33 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import headshot from "@/assets/gabriel-headshot.jpg";
 
 const skillGroups = [
   {
     icon: Cloud,
     title: "Cloud Platforms",
-    skills: ["AWS", "Azure", "GCP", "EC2", "ECS", "ALB", "Auto Scaling"],
-  },
-  {
-    icon: Layers,
-    title: "Infrastructure as Code",
-    skills: ["Terraform", "Packer", "Ansible", "CloudFormation"],
+    skills: ["AWS", "Azure", "GCP"],
   },
   {
     icon: Container,
     title: "Containers & Orchestration",
-    skills: ["Kubernetes", "Docker", "Argo CD", "Helm", "GitOps"],
+    skills: ["Docker", "Kubernetes", "Helm", "ECS"],
+  },
+  {
+    icon: Layers,
+    title: "Infrastructure as Code",
+    skills: ["Terraform", "Ansible", "Packer"],
   },
   {
     icon: GitBranch,
-    title: "CI/CD & Automation",
-    skills: ["GitHub Actions", "Azure DevOps", "Bitbucket", "Octopus Deploy"],
+    title: "CI/CD & GitOps",
+    skills: ["GitHub Actions", "Azure DevOps", "ArgoCD"],
   },
   {
     icon: Activity,
-    title: "Monitoring & Observability",
-    skills: ["Prometheus", "Grafana", "CloudWatch", "SRE"],
+    title: "Monitoring & Reliability",
+    skills: ["Prometheus", "Grafana", "CloudWatch"],
   },
   {
     icon: Shield,
@@ -95,6 +100,8 @@ const projects = [
     description:
       "Production-grade AWS environment provisioned end-to-end with Terraform, including auto-scaling web tier, load balancing, and full observability.",
     stack: ["Terraform", "AWS", "EC2", "Auto Scaling", "ALB", "CloudWatch"],
+    impact: "Cut provisioning time from days to minutes and reduced infra cost by ~40%.",
+    repo: "https://github.com/gabbyTI",
   },
   {
     icon: GitBranch,
@@ -102,6 +109,8 @@ const projects = [
     description:
       "Immutable image-based delivery pipeline that bakes AMIs with Packer and Ansible, then promotes them through environments via GitHub Actions and Terraform.",
     stack: ["GitHub Actions", "Packer", "Ansible", "Terraform", "AWS"],
+    impact: "Eliminated drift and shipped zero-downtime, repeatable deployments across envs.",
+    repo: "https://github.com/gabbyTI",
   },
   {
     icon: Code2,
@@ -109,7 +118,31 @@ const projects = [
     description:
       "Serverless conversational platform on AWS combining Lex, Bedrock, and Lambda with Amplify front-end and Cognito authentication.",
     stack: ["Amplify", "Cognito", "Lex", "Bedrock", "Lambda", "DynamoDB", "S3"],
+    impact: "Delivered a fully serverless GenAI assistant scaling on demand with zero idle cost.",
+    repo: "https://github.com/gabbyTI",
   },
+];
+
+const impactHighlights = [
+  { icon: TrendingDown, text: "Reduced AWS infrastructure costs by 40%" },
+  { icon: Workflow, text: "Automated deployments using Terraform, GitHub Actions, and Ansible" },
+  { icon: Container, text: "Managed Kubernetes workloads across multiple environments" },
+  { icon: GitBranch, text: "Built GitOps delivery pipelines using ArgoCD and Helm" },
+  { icon: Activity, text: "Improved deployment reliability and operational efficiency" },
+];
+
+const availableFor = [
+  "Senior DevOps Engineer",
+  "Site Reliability Engineer",
+  "Platform Engineer",
+  "Cloud Engineer",
+  "Infrastructure Engineer",
+];
+
+const resumeVariants = [
+  { label: "Senior DevOps Resume", file: "/gabriel-ibenye-resume.pdf" },
+  { label: "Site Reliability Engineer Resume", file: "/gabriel-ibenye-sre-resume.pdf" },
+  { label: "Senior Cloud Engineer Resume", file: "/gabriel-ibenye-cloud-resume.pdf" },
 ];
 
 const certifications = [
@@ -164,42 +197,79 @@ export function Portfolio() {
         style={{ background: "var(--gradient-hero)" }}
       >
         <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_1px_1px,oklch(0.75_0.16_190/0.4)_1px,transparent_0)] [background-size:24px_24px]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <MapPin className="h-4 w-4 text-primary" />
-            Toronto, ON, Canada
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-20 md:py-28 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <MapPin className="h-4 w-4 text-primary" />
+              Toronto, ON, Canada
+            </div>
+            <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
+              Gabriel Ibenye
+            </h1>
+            <p className="mt-4 max-w-3xl text-lg text-muted-foreground md:text-xl">
+              Senior DevOps Engineer
+              <span className="mx-2 text-primary">·</span>
+              AWS · Azure · Kubernetes · Terraform · CI/CD
+            </p>
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Senior DevOps Engineer with 5+ years of experience building scalable cloud
+              infrastructure, Kubernetes platforms, CI/CD pipelines, and Infrastructure as
+              Code across AWS, Azure, and GCP.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="shadow-lg">
+                <a href="/gabriel-ibenye-resume.pdf" download>
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="https://github.com/gabbyTI" target="_blank" rel="noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  View GitHub
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="secondary">
+                <a href="#contact">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact Me
+                </a>
+              </Button>
+            </div>
           </div>
-          <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-6xl">
-            Gabriel Ibenye
-          </h1>
-          <p className="mt-4 max-w-3xl text-lg text-muted-foreground md:text-xl">
-            Senior DevOps Engineer
-            <span className="mx-2 text-primary">·</span>
-            AWS · Azure · Kubernetes · Terraform · CI/CD
-          </p>
-          <p className="mt-6 max-w-2xl text-base text-muted-foreground">
-            5+ years designing, automating, and operating reliable cloud infrastructure
-            for high-availability workloads.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg" className="shadow-lg">
-              <a href="/gabriel-ibenye-resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <a href="https://github.com/gabbyTI" target="_blank" rel="noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                View GitHub
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="secondary">
-              <a href="#contact">
-                <Mail className="mr-2 h-4 w-4" />
-                Contact Me
-              </a>
-            </Button>
+          <div className="relative mx-auto lg:mx-0">
+            <div
+              className="absolute -inset-4 rounded-full opacity-60 blur-2xl"
+              style={{ background: "var(--gradient-primary)" }}
+              aria-hidden
+            />
+            <img
+              src={headshot}
+              alt="Portrait of Gabriel Ibenye, Senior DevOps Engineer"
+              width={256}
+              height={256}
+              className="relative h-48 w-48 rounded-full border-2 border-primary/40 object-cover shadow-2xl md:h-56 md:w-56 lg:h-64 lg:w-64"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Impact Highlights */}
+      <section id="impact" className="border-b border-border/60 bg-card/30">
+        <div className="mx-auto max-w-6xl px-6 py-16">
+          <SectionHeading eyebrow="Impact" title="Impact Highlights" />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {impactHighlights.map((h) => (
+              <div
+                key={h.text}
+                className="flex items-start gap-3 rounded-lg border border-border/60 bg-card p-5"
+              >
+                <div className="flex h-9 w-9 flex-none items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <h.icon className="h-5 w-5" />
+                </div>
+                <p className="text-sm leading-relaxed text-foreground/90">{h.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -294,7 +364,11 @@ export function Portfolio() {
                     {p.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="mt-auto">
+                <CardContent className="mt-auto space-y-4">
+                  <div className="flex items-start gap-2 rounded-md border border-primary/20 bg-primary/5 p-3 text-xs text-foreground/80">
+                    <Rocket className="mt-0.5 h-4 w-4 flex-none text-primary" />
+                    <span>{p.impact}</span>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {p.stack.map((s) => (
                       <Badge key={s} variant="outline" className="font-normal">
@@ -302,6 +376,18 @@ export function Portfolio() {
                       </Badge>
                     ))}
                   </div>
+                  {p.repo ? (
+                    <a
+                      href={p.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                    >
+                      <Github className="h-4 w-4" />
+                      View on GitHub
+                      <ExternalLink className="h-3 w-3 opacity-60" />
+                    </a>
+                  ) : null}
                 </CardContent>
               </Card>
             ))}
@@ -358,9 +444,45 @@ export function Portfolio() {
             center
           />
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-            Available for senior DevOps, SRE, and Cloud Engineering roles. Happy to
-            discuss your team's infrastructure, automation, or migration needs.
+            Happy to discuss your team's infrastructure, automation, or migration needs.
           </p>
+
+          <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-border/60 bg-card p-6 text-left">
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Available For
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {availableFor.map((r) => (
+                <Badge key={r} variant="secondary" className="px-3 py-1 text-sm font-normal">
+                  <CheckCircle2 className="mr-1.5 h-3.5 w-3.5 text-primary" />
+                  {r}
+                </Badge>
+              ))}
+            </div>
+            <div className="mt-5 flex items-start gap-2 text-sm text-muted-foreground">
+              <MapPin className="mt-0.5 h-4 w-4 flex-none text-primary" />
+              <span>
+                Toronto, Canada · Open to Remote, Hybrid, and Relocation opportunities
+              </span>
+            </div>
+
+            <div className="mt-6 border-t border-border/60 pt-6">
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Tailored Resumes
+              </div>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {resumeVariants.map((r) => (
+                  <Button key={r.label} asChild variant="outline" size="sm">
+                    <a href={r.file} download>
+                      <Download className="mr-2 h-4 w-4" />
+                      {r.label}
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg">
               <a href="mailto:gabrielibenye3@gmail.com">
