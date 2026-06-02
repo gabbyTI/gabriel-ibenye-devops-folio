@@ -6,29 +6,9 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-const serverEntry = "src/server.ts";
-
 export default defineConfig({
   nitro: {
     preset: "static",
     ...({ prerender: { crawlLinks: true, routes: ["/"], failOnError: false } } as object),
-  },
-  vite: {
-    environments: {
-      ssr: {
-        build: {
-          rollupOptions: {
-            input: serverEntry,
-          },
-        },
-      },
-      server: {
-        build: {
-          rollupOptions: {
-            input: serverEntry,
-          },
-        },
-      },
-    },
   },
 });
