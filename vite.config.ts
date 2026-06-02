@@ -14,10 +14,6 @@ export default defineConfig({
   },
   nitro: {
     preset: "static",
-    prerender: {
-      crawlLinks: true,
-      routes: ["/"],
-      failOnError: false,
-    },
+    ...({ prerender: { crawlLinks: true, routes: ["/"], failOnError: false } } as object),
   },
 });
