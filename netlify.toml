@@ -1,11 +1,6 @@
 [build]
   command = "bun run build"
-  publish = "dist/client"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  publish = "dist/netlify/static"
 
 [[headers]]
   for = "/assets/*"
