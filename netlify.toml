@@ -1,6 +1,6 @@
 [build]
   command = "bun run build"
-  publish = "dist/netlify/static"
+  publish = "dist/client"
 
 [[headers]]
   for = "/assets/*"
