@@ -2,11 +2,6 @@
   command = "bun run build"
   publish = "dist/client"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 [[headers]]
   for = "/assets/*"
   [headers.values]
