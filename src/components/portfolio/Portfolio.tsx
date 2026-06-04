@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ComponentType } from "react";
 import {
   Cloud,
   Container,
@@ -738,7 +738,7 @@ function CaseRow({
   label,
   body,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
   label: string;
   body: string;
 }) {
